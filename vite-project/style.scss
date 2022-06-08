@@ -1,0 +1,12 @@
+@use "sass"as *;
+$bodyBg: #1d2a35;
+
+body {
+  background-color: $bodyBg;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: green;
+  margin-top: 60px;
+}
