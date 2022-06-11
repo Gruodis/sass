@@ -3,6 +3,14 @@ export const TestModule = (message) => {
 };
 
 const pushHere = document.getElementById('pushHere');
+const darkMode = document.getElementById('icon');
+
+darkMode.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+
+});
 let localBookData = [];
 
 

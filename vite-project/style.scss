@@ -1,23 +1,32 @@
 @use "sass"as *;
 @use "sass:map";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
+
 $bodyBg: #1d2a35;
 
-$config: (a: (b: (c: d)));
+//$config: (a: (b: (c: d)));
 
 /********************************
 
-#{map.get($config, a, b, c)}; //
+{
+  map.get($config, a, b, c)
+}
+
+; //
 
 */
 
 body {
-  background-color: $bodyBg;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  color: #1d2a35;
   margin-top: 60px;
+  &.dark-mode {
+    background-color: $bodyBg;
+    color: white;
+  }
   & #pushHere {
     max-width: 100%;
 
