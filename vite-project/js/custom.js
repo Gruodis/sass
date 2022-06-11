@@ -1,3 +1,6 @@
+let classExists = null;
+
+
 export const TestModule = (message) => {
     console.log(message);
 };
@@ -5,13 +8,13 @@ export const TestModule = (message) => {
 const pushHere = document.getElementById('pushHere');
 const darkMode = document.getElementById('icon');
 
-darkMode.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark-mode");
+let foo = false;
 
 
-});
 let localBookData = [];
+
+console.log(document.getElementsByTagName("div")[1]);
+
 
 
 export const TestPost = (async function (window, document) {
@@ -32,12 +35,33 @@ export const TestPost = (async function (window, document) {
         console.log(error);
     }
 
+    let mode = localStorage.getItem('mode');
+
+    if (mode === 'mode') {
+        document.body.classList.add("dark-mode");
+    }
+
 
 
 })(window, document);
 
 
 export const TestRun = () => {
+    let darkM = window.localStorage.getItem("mode");
+    foo = document.body.classList.contains('dark-mode');
+
+    console.log(`Check foo `, foo, darkMode);
+
+    if (darkM === 'dark-mode') {
+        console.log(`true `, darkMode);
+        document.body.classList.add("dark-mode");
+    }
+    else {
+        console.log(`false `, darkMode);
+        document.body.classList.remove("dark-mode");
+    }
+
+
 
     /*
        ****** clear list
@@ -123,3 +147,17 @@ export const TestRun = () => {
 
     // })
 };
+
+darkMode.addEventListener("click", function () {
+    foo = document.body.classList.contains('dark-mode');
+
+    if (!foo) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('mode', 'dark-mode');
+    }
+    else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('mode', null);
+    }
+    console.log(`Click `, foo)
+});
