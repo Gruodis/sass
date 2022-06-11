@@ -1,5 +1,14 @@
 @use "sass"as *;
+@use "sass:map";
 $bodyBg: #1d2a35;
+
+$config: (a: (b: (c: d)));
+
+/********************************
+
+#{map.get($config, a, b, c)}; //
+
+*/
 
 body {
   background-color: $bodyBg;
@@ -7,6 +16,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: green;
+  color: white;
   margin-top: 60px;
+  & #pushHere {
+    max-width: 100%;
+
+    & .list-group-item {
+      background-color: rgb(21 32 43);
+      color: white;
+    }
+  }
 }
