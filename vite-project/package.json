@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "sass": "^1.52.2",
+    "sass-autoprefixer": "^1.0.1",
     "vite": "^2.9.9"
   }
 }

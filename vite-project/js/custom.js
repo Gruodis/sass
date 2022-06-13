@@ -47,6 +47,10 @@ export const TestPost = (async function (window, document) {
 
 
 export const TestRun = () => {
+
+    /*
+    ****** check LocalStorage for Dark Mode
+    */
     let darkM = window.localStorage.getItem("mode");
     foo = document.body.classList.contains('dark-mode');
 
@@ -64,40 +68,16 @@ export const TestRun = () => {
 
 
     /*
-       ****** clear list
-       */
+    ****** clear list
+    */
     pushHere.innerHTML = '';
     /*
     ****** create list
     */
 
-    // let createUl = document.createElement('ul');
-    // // createUl.classList.add();
-
-    // console.log(createUl);
-
-    /*
-    ****** compare bookData type: data with localBookTypes id:
-    */
     localBookData.forEach(book => {
 
-        // let bookType = "TYPE";
-        // let bookTypeTitle;
 
-        // localBookTypes.forEach(type => {
-        //     if (book.type === type.id) {
-
-        //         bookType = document.createElement("p");
-        //         bookType.classList.add('img-fluid');
-
-        //         bookTypeTitle = document.createTextNode(type.title);
-        //         bookType.appendChild(bookTypeTitle);
-
-        //     }
-        // })
-
-
-        // console.log('SORTING ARRAY: ', book.localBookTypes);
 
 
 
@@ -111,43 +91,23 @@ export const TestRun = () => {
         bookTitleSpan.appendChild(bookTitle);
 
 
-        let bookAuthorParagraph = document.createElement("p");
+        let bookAuthorParagraph = document.createElement("pre");
         let bookAuthorSpan = document.createElement("small");
         let bookAuthor = document.createTextNode("Autorius: " + book.body);
         bookAuthorSpan.appendChild(bookAuthor);
         bookAuthorParagraph.appendChild(bookAuthorSpan);
 
 
-        // let image = document.createElement("IMG");
-        // image.setAttribute("src", `${book.img}`);
-        // image.setAttribute("width", "304");
-        // image.setAttribute("height", "228");
-        // image.setAttribute("alt", `${book.title}`);
-        // image.classList.add('img-fluid');
-
-
-
-
-
-        // let bookPriceSpan = document.createElement("small");
-        // let bookPrice = document.createTextNode("€" + book.price);
-        // bookPriceSpan.appendChild(bookPrice);
-
-
         createLi.append(bookTitleSpan, bookAuthorParagraph);
 
         pushHere.appendChild(createLi);
-        // createUl.appendChild(createLi);
+
     })
 
-
-    //     displayPosts.forEach(post => {
-    //     console.log(`Title: ${post.title}, ' 
-    //      'Content: ${post.body}`);
-
-    // })
 };
-
+/*
+****** Button for Dark/Light mode
+*/
 darkMode.addEventListener("click", function () {
     foo = document.body.classList.contains('dark-mode');
 

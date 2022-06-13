@@ -1,9 +1,7 @@
 @use "sass"as *;
 @use "sass:map";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css");
-
-$bodyBg: #1d2a35;
-
+@import "./node_modules/sass-autoprefixer/scss/prefixes.scss";
 //$config: (a: (b: (c: d)));
 
 /********************************
@@ -21,23 +19,125 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #1d2a35;
+  @include set-background-color($body-light);
+  transition: all 250ms ease-in-out;
+  // color: #1d2a35;
+  // @include button("-primary", $body-dark);
   margin-top: 60px;
-  &.dark-mode {
-    background-color: $bodyBg;
-    color: white;
-  }
-  & #pushHere {
-    max-width: 100%;
+}
 
-    & .list-group-item {
-      background-color: rgb(21 32 43);
-      color: white;
+nav {
+  // @include vp-display(flex);
+  display: flex;
+  padding: 0.5em 0;
+  @include set-background-color($body-dark)
+}
+
+nav a {
+  display: inline-block;
+  position: relative;
+  color: set-text-color($body-dark);
+  text-decoration: none;
+  padding: 7px 17px;
+  margin: 0 .5em;
+
+}
+
+nav a:hover {
+  color: set-text-color($body-dark);
+  transition: all 250ms ease-in-out;
+  // border-bottom: 1px solid set-text-color($body-light);
+
+  &::after {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+  }
+
+}
+
+nav a::after {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  content: '';
+  border-bottom: solid 3px set-text-color($body-dark);
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+
+}
+
+@include button("-primary", $body-light);
+@include button("-secondary", $secondary);
+
+.dark-mode {
+  nav {
+    @include set-background-color($body-light)
+  }
+
+  nav a::after {
+    border-bottom: solid 3px set-text-color($body-light);
+  }
+
+  a:not(.button-primary, .button-secondary) {
+    color: set-text-color($body-light);
+  }
+@include set-background-color($body-dark);
+@include button("-primary", $body-dark);
+
+// @include button("-primary", $body-light);
+
+& .list-group-item {
+  @include set-background-color(lighten($body-dark, 5%));
+
+  & pre {
+    @include set-background-color($body-dark);
+    padding: 1em;
+  }
+
+  }
+
+  #icon {
+    &:hover::before {
+      border: solid 3px set-text-color($body-dark);
+
     }
   }
 }
-
 #icon {
+  display: inline-block;
   font-size: 2rem;
   cursor: pointer;
+  margin-bottom: 1em;
+  transition: all 250ms ease-in-out;
+
+  &:hover::before {
+    border: solid 3px set-text-color($body-light);
+    border-radius: 100%;
+    width: 36px;
+    height: 36px;
+  }
+  }
+
+  .page-header {
+    margin: 1em 0;
+}
+
+#pushHere {
+  max-width: 100%;
+
+  & .list-group-item {
+    text-align: left;
+
+    h2 {
+      text-transform: uppercase;
+      margin-bottom: 1em;
+      overflow: hidden;
+      max-width: 25ch;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 }
